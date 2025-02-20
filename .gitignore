@@ -11,3 +11,5 @@ dist
 .DS_STORE
 back/pnpm-lock.yaml
 front/pnpm-lock.yaml
+.env
+back/.env

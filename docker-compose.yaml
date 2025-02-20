@@ -1,0 +1,18 @@
+services:
+  back:
+    build: ./back
+    container_name: store-back
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./back/.env
+
+  front:
+    build: ./front
+    container_name: store-front
+    ports:
+      - "8080:80"
+    environment:
+      VITE_API_URL: "http://localhost:3000"
+    depends_on:
+      - back

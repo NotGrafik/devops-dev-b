@@ -8,5 +8,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD [ "sh", "-c", "npmx prisma db psuh && npm run start" ]
+CMD [ "sh", "-c", "npx prisma db push && npm run start" ]
 #CMD [ "npm", "run", "start" ]
