@@ -9,3 +9,5 @@ dist
 .idea
 .vscode
 .DS_STORE
+back/pnpm-lock.yaml
+front/pnpm-lock.yaml
