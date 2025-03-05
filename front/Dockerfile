@@ -1,4 +1,6 @@
-FROM node:18 AS build-front
+FROM node:18-alpine AS build-front
+
+RUN apk add --no-cache openssl
 
 WORKDIR /app
 COPY package*.json ./
