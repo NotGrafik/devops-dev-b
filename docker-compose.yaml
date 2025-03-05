@@ -8,11 +8,12 @@ services:
       - ./back/.env
 
   front:
-    build: ./front
+    build:
+      context: ./front
+      args:
+        VITE_API_URL: "http://localhost:3000"
     container_name: store-front
     ports:
       - "8080:80"
-    environment:
-      VITE_API_URL: "http://localhost:3000"
     depends_on:
       - back
