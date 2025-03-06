@@ -1,6 +1,9 @@
 FROM node:18-alpine AS build-back
 
-RUN apk add --no-cache openssl
+RUN apk update \
+    && apk add --no-cache openssl\
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 COPY package*.json ./
