@@ -66,7 +66,7 @@ jobs:
       - name: Send Discord Notification
         if: always()
         run: |
-          STATUS="✅ SUCCESS"
+          STATUS="✅ SUCCESS for Pablo"
           if [ "${{ job.status }}" == "failure" ]; then STATUS="❌ FAILURE"; fi
           curl -H "Content-Type: application/json" -X POST \
               -d "{\"username\": \"CI/CD Bot\", \"content\": \"$STATUS - Backend Build: ${{ job.status }}\"}" \
