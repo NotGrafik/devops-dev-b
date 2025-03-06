@@ -63,6 +63,15 @@ jobs:
             JWT_SECRET=${{ secrets.JWT_SECRET }}
             BCRYPT_SALT_ROUNDS=${{ secrets.BCRYPT_SALT_ROUNDS }}
 
+      - name: Send Discord Notification
+        if: always()
+        run: |
+          STATUS="✅ SUCCESS"
+          if [ "${{ job.status }}" == "failure" ]; then STATUS="❌ FAILURE"; fi
+          curl -H "Content-Type: application/json" -X POST \
+              -d "{\"username\": \"CI/CD Bot\", \"content\": \"$STATUS - Backend Build: ${{ job.status }}\"}" \
+              ${{ secrets.DISCORD_WEBHOOK_URL }}
+              
       - name: Scan Docker Image for Vulnerabilities
         if: always()
         uses: aquasecurity/trivy-action@master
